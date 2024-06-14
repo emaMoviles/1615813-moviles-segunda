@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="color: white;">Login</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/home">
+        <ion-icon name="exit-outline" style="color: white;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="formUser" (ngSubmit)="onSubmit()">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" name="email" formControlName="email" ></ion-input>
+      </ion-item>
+      <div style="padding: auto; margin-top:10px ;" class="alert alert-danger" *ngIf="formUser.get('email').touched && formUser.get('email').invalid">
+        <p class="error-message" *ngIf="formUser.get('email')?.errors?.['required']">El correo es obligatorio.</p>
+        <p class="error-message" *ngIf="formUser.get('email')?.errors?.['pattern']">El correo debe incluir &#64;.</p>
+        <p class="error-message" *ngIf="formUser.get('email')?.errors?.['minlength']">El correo debe tener al menos 8 caracteres.</p>
+      </div>
+
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" name="password" formControlName="password"></ion-input>
+      </ion-item>
+      <div style="padding: auto; margin-top:10px ;" *ngIf="formUser.get('password')?.touched && formUser.get('password').invalid">
+        <p class="error-message" *ngIf="formUser.controls['password']?.errors?.['required']">La contraseña es obligatoria.</p>
+        <p class="error-message" *ngIf="formUser.controls['password']?.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres.</p>
+      </div>
+      <div style="display: flex;align-items: center; justify-content: center;margin-top: 15px;">
+        <ion-button  type="submit">Login</ion-button>
+        
+      </div>
+    </ion-list>
+  </form>
+</ion-content>
+
+<style>
+  .error-message {
+    color: purple;
+    margin-left: 16px;
+    margin-top: -12px;
+    font-size: 12px;
+  }
+</style>

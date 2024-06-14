@@ -1,0 +1,26 @@
+ion-header {
+    --background: #ffffff;
+    ion-toolbar {
+      --background: purple;
+      --color: #ffffff;
+      ion-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+      }
+    }
+  }
+  
+  .sin-articulos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50vh; 
+      text-align: center;
+      font-size: 1.2em;
+      color: gray;
+      padding-top: 300px;
+    }
+    
+    .sin-articulos p {
+      font-size: 1.5em; /* Ajusta el tamaño de la fuente */
+    }

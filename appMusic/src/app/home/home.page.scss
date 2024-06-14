@@ -1,0 +1,30 @@
+.container
+{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100% !important;
+    background-color: #000 !important;
+    color:#fff !important;
+}
+.header
+{
+    margin-top: 20px;
+}
+.header-image
+{
+    width: 100%;
+    max-width: 300px;
+}
+.title
+{
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.2em;
+}
+.buttons
+{
+    width: 80%;
+    
+}

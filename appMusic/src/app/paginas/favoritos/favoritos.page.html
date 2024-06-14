@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Favoritos Seleccionados
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let articulos of articulosFavoritos">
+        <ion-card (click)="detalleArticulo(articulos)">
+          <img [src]="articulos.imagen"/>
+          <ion-card-content>
+            <ion-card-title>{{ articulos.nombre }}</ion-card-title>
+            <p>{{ articulos.precio | currency }}</p>
+            <ion-button (click)="removerDeFavoritos(articulos)" shape="round">Eliminar de Favoritos</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div *ngIf="articulosFavoritos.length === 0" class="sin-articulos">
+    <p>Favoritos esta vacio</p>
+  </div>
+</ion-content>

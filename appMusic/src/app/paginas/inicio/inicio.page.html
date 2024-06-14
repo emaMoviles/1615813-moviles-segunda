@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <h3>Inicio</h3>
+    </ion-title>
+    <ion-button style="color: white;" routerLink="/home"><ion-icon name="exit-outline"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="contenedor">
+    <div>
+      <h2>Hello, Welcome: {{nombreUsuario}}</h2>
+    </div>
+    <ion-avatar>
+      <img src="assets/images/avatar.jpg">
+    </ion-avatar>
+  </div>
+
+  <ion-searchbar placeholder="Buscar" (ionInput)="filtrar($event)"></ion-searchbar>
+
+  <div class="apartado-contenedor">
+    <ion-segment [(ngModel)]="apartados" (ionChange)="filtrar()">
+      <ion-segment-button value="all">Todo</ion-segment-button>
+      <ion-segment-button value="Watch">Relojes</ion-segment-button>
+      <ion-segment-button value="Hat">Sombreros</ion-segment-button>
+      <ion-segment-button value="Dress">Vestidos</ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let articulos of ArticulosFiltrados">
+        <ion-card (click)="detalleProducto(articulos)">
+          <img [src]="articulos.imagen"/>
+          <ion-card-content>
+            <ion-card-title>{{ articulos.nombre }}</ion-card-title>
+            <p>{{ articulos.precio | currency }}</p>
+            <ion-button shape="round" (click)="AgregarFavoritos(articulos)">Agregar a Favoritos</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div *ngIf="ArticulosFiltrados.length === 0" class="sin-articulos">
+    <p><strong>no hay articulos</strong></p>
+  </div>
+
+</ion-content>
+<div style="display: flex;align-content: center;justify-content: center;">
+  <ion-toolbar  style=" background-color: #6a0dad; color: white;margin: 3rem;border-radius: 2rem;overflow: hidden;box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);width: 70%;">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4" >
+          <ion-button  routerLink="/inicio"><ion-icon name="home-outline" slot="icon-only" style="color: white;"></ion-icon></ion-button>
+        </ion-col>
+        <ion-col size="4" >
+          <ion-button routerLink="/agregar-carrito"><ion-icon name="cart-outline" slot="icon-only" style="color: white;"></ion-icon></ion-button>
+        </ion-col>
+        <ion-col size="4" >
+          <ion-button routerLink="/favoritos" ><ion-icon name="heart-outline" slot="icon-only" style="color: white;"></ion-icon></ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>  
+  </ion-toolbar>
+</div>
+
